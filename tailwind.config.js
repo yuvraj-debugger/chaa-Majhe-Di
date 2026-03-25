@@ -16,6 +16,14 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                'chaa-maroon': '#8C1C13',
+                'chaa-yellow': '#F2C14E',
+                'chaa-brown': '#5E2C1A',
+                'chaa-warm': '#7A0C06',
+                'chaa-cream': '#FDF9F3',
+                'chaa-latte': '#F2E8D5',
+            },
         },
     },
 
