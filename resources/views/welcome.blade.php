@@ -222,33 +222,49 @@
             </div>
         </div>
     </section>
-
     <!-- Franchise Section: Standard Simple -->
     <section id="franchise" class="py-24 px-6 bg-gray-50 relative overflow-hidden">
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="flex flex-col lg:flex-row gap-16 items-start">
                 <!-- Franchise Info -->
                 <div class="w-full lg:w-1/3">
-                    <h2 class="font-['Playfair_Display'] text-4xl font-bold text-chaa-brown mb-6 italic">Join Our Success</h2>
-                    <p class="text-chaa-brown/70 mb-10 leading-relaxed font-medium">Bring the authentic taste of Indian tea to your city. Become a partner in our growing Chaa revolution.</p>
+                    <h2 class="font-['Playfair_Display'] text-4xl font-bold text-chaa-brown mb-6 italic">Join Our
+                        Success</h2>
+                    <p class="text-chaa-brown/70 mb-10 leading-relaxed font-medium">Bring the authentic taste of Indian
+                        tea to your city. Become a partner in our growing Chaa revolution.</p>
 
                     <div class="space-y-12">
                         <div class="flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-chaa-maroon text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-chaa-maroon/20 group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <div
+                                class="w-12 h-12 bg-chaa-maroon text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-chaa-maroon/20 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-chaa-brown underline decoration-chaa-yellow decoration-2 underline-offset-4 mb-1 uppercase tracking-tight">Proven Growth</h4>
-                                <p class="text-chaa-brown/60 font-medium tracking-tight">High ROI business model with a loyal customer base across several cities.</p>
+                                <h4
+                                    class="font-bold text-lg text-chaa-brown underline decoration-chaa-yellow decoration-2 underline-offset-4 mb-1 uppercase tracking-tight">
+                                    Proven Growth</h4>
+                                <p class="text-chaa-brown/60 font-medium tracking-tight">High ROI business model with a
+                                    loyal customer base across several cities.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4 group">
-                            <div class="w-12 h-12 bg-chaa-maroon text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-chaa-maroon/20 group-hover:scale-110 transition-transform">
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5"></path></svg>
+                            <div
+                                class="w-12 h-12 bg-chaa-maroon text-white rounded-2xl flex items-center justify-center shrink-0 shadow-lg shadow-chaa-maroon/20 group-hover:scale-110 transition-transform">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5">
+                                    </path>
+                                </svg>
                             </div>
                             <div>
-                                <h4 class="font-bold text-lg text-chaa-brown underline decoration-chaa-yellow decoration-2 underline-offset-4 mb-1 uppercase tracking-tight">Site Support</h4>
-                                <p class="text-chaa-brown/60 font-medium tracking-tight">Full assistance in site selection, store design, and operational training.</p>
+                                <h4
+                                    class="font-bold text-lg text-chaa-brown underline decoration-chaa-yellow decoration-2 underline-offset-4 mb-1 uppercase tracking-tight">
+                                    Site Support</h4>
+                                <p class="text-chaa-brown/60 font-medium tracking-tight">Full assistance in site
+                                    selection, store design, and operational training.</p>
                             </div>
                         </div>
                     </div>
@@ -259,9 +275,14 @@
                     <div class="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-chaa-yellow/20 relative">
                         <!-- Success Message -->
                         @if(session('success_franchise'))
-                        <div class="mb-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-2xl flex items-center gap-3">
-                            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            <span class="font-bold uppercase tracking-widest text-xs">{{ session('success_franchise') }}</span>
+                        <div
+                            class="mb-8 p-4 bg-green-50 border border-green-200 text-green-700 rounded-2xl flex items-center gap-3">
+                            <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span class="font-bold uppercase tracking-widest text-xs">{{ session('success_franchise')
+                                }}</span>
                         </div>
                         @endif
 
@@ -269,58 +290,69 @@
                             @csrf
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="space-y-2">
-                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Full Name</label>
-                                    <input type="text" name="name" value="{{ old('name') }}" required 
-                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium" 
+                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Full
+                                        Name</label>
+                                    <input type="text" name="name" value="{{ old('name') }}" required
+                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium"
                                         placeholder="Enter Name">
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Email address</label>
-                                    <input type="email" name="email" value="{{ old('email') }}" required 
-                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium" 
+                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Email
+                                        address</label>
+                                    <input type="email" name="email" value="{{ old('email') }}" required
+                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium"
                                         placeholder="Email Address">
                                 </div>
                             </div>
 
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div class="space-y-2">
-                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Contact Number</label>
-                                    <input type="text" name="number" value="{{ old('number') }}" required pattern="[0-9]{10}"
-                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium" 
+                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Contact
+                                        Number</label>
+                                    <input type="text" name="number" value="{{ old('number') }}" required
+                                        pattern="[0-9]{10}"
+                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium"
                                         placeholder="10 Digits">
                                 </div>
                                 <div class="space-y-2">
-                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Target Area</label>
-                                    <input type="text" name="area" value="{{ old('area') }}" required 
-                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium" 
+                                    <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Target
+                                        Area</label>
+                                    <input type="text" name="area" value="{{ old('area') }}" required
+                                        class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium"
                                         placeholder="Proposed Location">
                                 </div>
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Business Model</label>
+                                <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Business
+                                    Model</label>
                                 <div class="grid grid-cols-2 gap-4">
-                                    <label class="flex items-center gap-3 bg-chaa-cream/50 px-6 py-4 rounded-2xl cursor-pointer">
-                                        <input type="radio" name="model_type" value="Take Away" required class="text-chaa-maroon focus:ring-chaa-maroon">
+                                    <label
+                                        class="flex items-center gap-3 bg-chaa-cream/50 px-6 py-4 rounded-2xl cursor-pointer">
+                                        <input type="radio" name="model_type" value="Take Away" required
+                                            class="text-chaa-maroon focus:ring-chaa-maroon">
                                         <span class="font-bold text-chaa-brown">Take Away</span>
                                     </label>
-                                    <label class="flex items-center gap-3 bg-chaa-cream/50 px-6 py-4 rounded-2xl cursor-pointer">
-                                        <input type="radio" name="model_type" value="Dining" required class="text-chaa-maroon focus:ring-chaa-maroon">
+                                    <label
+                                        class="flex items-center gap-3 bg-chaa-cream/50 px-6 py-4 rounded-2xl cursor-pointer">
+                                        <input type="radio" name="model_type" value="Dining" required
+                                            class="text-chaa-maroon focus:ring-chaa-maroon">
                                         <span class="font-bold text-chaa-brown">Dining</span>
                                     </label>
                                 </div>
                             </div>
 
                             <div class="space-y-2">
-                                <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Your Vision</label>
-                                <textarea name="message" rows="3" 
-                                    class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium resize-none" 
+                                <label class="text-sm font-black text-chaa-brown/60 ml-2 italic uppercase">Your
+                                    Vision</label>
+                                <textarea name="message" rows="3"
+                                    class="w-full bg-chaa-cream/50 border-2 border-transparent focus:border-chaa-maroon focus:ring-0 rounded-2xl px-6 py-4 transition-all placeholder:text-chaa-brown/30 font-medium resize-none"
                                     placeholder="Tell us about your plans...">{{ old('message') }}</textarea>
                             </div>
-                            
+
                             <input type="hidden" name="address" value="Refer to Area">
 
-                            <button type="submit" 
+                            <button type="submit"
                                 class="w-full bg-chaa-maroon text-white font-black py-4 rounded-2xl hover:bg-chaa-warm transition-all shadow-xl shadow-chaa-maroon/10 uppercase tracking-[0.3em] text-xs transform active:scale-95">
                                 Submit Application
                             </button>
@@ -335,48 +367,65 @@
     <section id="gallery" class="py-24 px-6 bg-chaa-cream/30 relative overflow-hidden">
         <div class="max-w-7xl mx-auto relative z-10">
             <div class="text-center mb-16 space-y-4">
-                <h2 class="font-['Playfair_Display'] text-5xl font-bold italic leading-tight">Captured <span class="text-chaa-maroon">Moments.</span></h2>
+                <h2 class="font-['Playfair_Display'] text-5xl font-bold italic leading-tight">Captured <span
+                        class="text-chaa-maroon">Moments.</span></h2>
                 <div class="w-24 h-1.5 bg-chaa-maroon mx-auto rounded-full"></div>
-                <p class="text-chaa-brown/60 font-medium tracking-tight">A visual journey through our heritage, ingredients, and the love for Chaa.</p>
+                <p class="text-chaa-brown/60 font-medium tracking-tight">A visual journey through our heritage,
+                    ingredients, and the love for Chaa.</p>
             </div>
 
             @if($galleries && $galleries->count() > 0)
-                <div class="swiper gallerySwiper pb-16">
-                    <div class="swiper-wrapper">
-                        @foreach($galleries as $image)
-                            <div class="swiper-slide">
-                                <div class="group relative aspect-square overflow-hidden rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border-4 border-white">
-                                    <img src="{{ asset('storage/' . $image->image_path) }}" 
-                                         alt="{{ $image->title ?? 'Chaa Majhe Di Gallery' }}" 
-                                         class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
-                                    
-                                    <!-- Subtle Overlay -->
-                                    <div class="absolute inset-0 bg-chaa-maroon/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                                    
-                                    @if($image->title)
-                                    <div class="absolute bottom-6 left-6 right-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg">
-                                        <p class="text-[10px] font-black uppercase tracking-widest text-chaa-maroon">{{ $image->title }}</p>
-                                    </div>
-                                    @endif
-                                </div>
+            <div class="swiper gallerySwiper pb-16">
+                <div class="swiper-wrapper">
+                    @foreach($galleries as $image)
+                    <div class="swiper-slide">
+                        <div
+                            class="group relative aspect-square overflow-hidden rounded-[2.5rem] shadow-xl hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 border-4 border-white">
+                            <img src="{{ asset('storage/' . $image->image_path) }}"
+                                alt="{{ $image->title ?? 'Chaa Majhe Di Gallery' }}"
+                                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000">
+
+                            <!-- Subtle Overlay -->
+                            <div
+                                class="absolute inset-0 bg-chaa-maroon/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                             </div>
-                        @endforeach
+
+                            @if($image->title)
+                            <div
+                                class="absolute bottom-6 left-6 right-6 translate-y-10 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-700 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-lg">
+                                <p class="text-[10px] font-black uppercase tracking-widest text-chaa-maroon">{{
+                                    $image->title }}</p>
+                            </div>
+                            @endif
+                        </div>
                     </div>
-                    
-                    <!-- Navigation & Pagination -->
-                    <div class="flex justify-center items-center gap-10 mt-12">
-                        <div class="swiper-button-prev !static !w-12 !h-12 !bg-white !rounded-full !shadow-lg border border-chaa-yellow/30 !text-chaa-maroon after:!text-sm hover:!bg-chaa-maroon hover:!text-white transition-all"></div>
-                        <div class="swiper-pagination !static !w-auto"></div>
-                        <div class="swiper-button-next !static !w-12 !h-12 !bg-white !rounded-full !shadow-lg border border-chaa-yellow/30 !text-chaa-maroon after:!text-sm hover:!bg-chaa-maroon hover:!text-white transition-all"></div>
+                    @endforeach
+                </div>
+
+                <!-- Navigation & Pagination -->
+                <div class="flex justify-center items-center gap-10 mt-12">
+                    <div
+                        class="swiper-button-prev !static !w-12 !h-12 !bg-white !rounded-full !shadow-lg border border-chaa-yellow/30 !text-chaa-maroon after:!text-sm hover:!bg-chaa-maroon hover:!text-white transition-all">
+                    </div>
+                    <div class="swiper-pagination !static !w-auto"></div>
+                    <div
+                        class="swiper-button-next !static !w-12 !h-12 !bg-white !rounded-full !shadow-lg border border-chaa-yellow/30 !text-chaa-maroon after:!text-sm hover:!bg-chaa-maroon hover:!text-white transition-all">
                     </div>
                 </div>
+            </div>
             @else
-                <div class="text-center py-32 bg-white/50 border-2 border-dashed border-chaa-yellow/20 rounded-[3rem]">
-                    <div class="w-20 h-20 bg-chaa-cream text-chaa-maroon/20 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    </div>
-                    <p class="text-chaa-brown/40 font-bold uppercase tracking-[0.3em] text-sm italic">Visual legacy loading...</p>
+            <div class="text-center py-32 bg-white/50 border-2 border-dashed border-chaa-yellow/20 rounded-[3rem]">
+                <div
+                    class="w-20 h-20 bg-chaa-cream text-chaa-maroon/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
+                    </svg>
                 </div>
+                <p class="text-chaa-brown/40 font-bold uppercase tracking-[0.3em] text-sm italic">Visual legacy
+                    loading...</p>
+            </div>
             @endif
         </div>
     </section>
