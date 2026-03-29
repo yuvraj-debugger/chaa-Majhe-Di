@@ -4,12 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FranchiseController;
-use App\Http\Controllers\GalleryController;
 use App\Models\Gallery;
+use App\Models\Menu;
+use App\Http\Controllers\MenuController;
 
 Route::get('/', function () {
     $galleries = Gallery::latest()->get();
-    return view('welcome', compact('galleries'));
+    $menus = Menu::latest()->get();
+    return view('welcome', compact('galleries', 'menus'));
 });
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
@@ -27,7 +29,8 @@ Route::middleware([
     Route::resource('users', UserController::class);
     Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
     Route::resource('franchises', FranchiseController::class)->only(['index', 'destroy']);
-    Route::resource('galleries', GalleryController::class)->only(['index', 'store', 'destroy']);
+    Route::resource('galleries', GalleryController::class);
+    Route::resource('menus', MenuController::class);
 
     Route::get('/items', function () {
         return view('inventory.items');

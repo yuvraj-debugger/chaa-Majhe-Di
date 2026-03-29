@@ -35,6 +35,34 @@ class GalleryController extends Controller
         return back()->with('error', 'Image upload failed.');
     }
 
+    public function edit(Gallery $gallery)
+    {
+        return view('galleries.edit', compact('gallery'));
+    }
+
+    public function update(Request $request, Gallery $gallery)
+    {
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
+            'title' => 'nullable|string|max:100',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old physical file
+            if (Storage::disk('public')->exists($gallery->image_path)) {
+                Storage::disk('public')->delete($gallery->image_path);
+            }
+            
+            $path = $request->file('image')->store('galleries', 'public');
+            $gallery->image_path = $path;
+        }
+
+        $gallery->title = $request->title;
+        $gallery->save();
+
+        return redirect()->route('galleries.index')->with('success', 'Gallery image updated successfully.');
+    }
+
     public function destroy(Gallery $gallery)
     {
         // Delete physical file

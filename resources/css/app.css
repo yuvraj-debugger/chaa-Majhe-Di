@@ -5,3 +5,94 @@
 [x-cloak] {
     display: none;
 }
+
+/* Animations inspired by Tastyc */
+@keyframes tstFadeUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tst-fade-up {
+    animation: tstFadeUp 1s ease-out forwards;
+}
+
+.tst-header-transparent {
+    background-color: transparent !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+}
+
+.tst-header-scrolled {
+    background-color: white !important;
+    border-color: rgba(0, 0, 0, 0.05) !important;
+    color: #5E2C1A !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.tst-hero-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/img/hero-bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Move these from Blade to here */
+.font-playfair { font-family: 'Playfair Display', serif; }
+.font-josefin { font-family: 'Josefin Sans', sans-serif; }
+.font-outfit { font-family: 'Outfit', sans-serif; }
+
+.btn-premium {
+    @apply relative overflow-hidden transition-all duration-500 uppercase tracking-[2px] font-bold text-[12px] px-8 py-4 inline-block text-center;
+}
+.btn-filled {
+    @apply bg-chaa-maroon text-white shadow-lg transition-opacity duration-300;
+}
+.btn-filled:hover {
+    @apply opacity-90;
+}
+.btn-outline {
+    @apply border-2 border-white text-white hover:bg-white hover:text-chaa-brown;
+}
+
+/* Heading accent line */
+.tst-heading-accent {
+    @apply relative inline-block mb-4 text-chaa-yellow uppercase tracking-[4px] font-bold text-xs;
+}
+.tst-heading-accent::before {
+    content: '';
+    @apply absolute -left-12 top-1/2 w-8 h-[2px] bg-chaa-yellow;
+}
+
+/* Custom Scroll Hint */
+.tst-scroll-hint {
+    width: 24px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 12px;
+    position: relative;
+}
+
+.tst-scroll-hint::after {
+    content: '';
+    width: 4px;
+    height: 8px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    top: 6px;
+    transform: translateX(-50%);
+    border-radius: 2px;
+    animation: scrollAnim 1.5s infinite;
+}
+
+@keyframes scrollAnim {
+    0% { transform: translate(-50%, 0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translate(-50%, 15px); opacity: 0; }
+}
+

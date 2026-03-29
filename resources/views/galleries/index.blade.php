@@ -43,26 +43,90 @@
                 @else
                     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                         @foreach($galleries as $image)
-                        <div class="group relative bg-gray-50 rounded-[2rem] overflow-hidden shadow-md border border-white">
-                            <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $image->title }}" class="w-full h-64 object-cover">
+                        <div class="bg-gray-50 rounded-[2rem] overflow-hidden shadow-md border border-white flex flex-col h-full">
+                            <div class="relative group overflow-hidden">
+                                <img src="{{ asset('storage/' . $image->image_path) }}" alt="{{ $image->title }}" class="w-full h-56 object-cover transition-transform group-hover:scale-110 duration-700">
+                                <div class="absolute inset-0 bg-black/5 pointer-events-none"></div>
+                            </div>
                             
-                            <!-- Overlay Actions -->
-                            <div class="absolute inset-0 bg-chaa-maroon/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-6 text-center text-white backdrop-blur-[2px]">
-                                <h4 class="font-bold text-sm mb-4 leading-tight">{{ $image->title ?? 'Untitled Brand Asset' }}</h4>
+                            <div class="p-6 flex flex-col flex-grow justify-between">
+                                <h4 class="font-bold text-sm mb-6 leading-tight text-chaa-brown/80 h-10 overflow-hidden line-clamp-2">
+                                    {{ $image->title ?? 'Untitled Brand Asset' }}
+                                </h4>
                                 
-                                <form action="{{ route('galleries.destroy', $image) }}" method="POST" onsubmit="return confirm('Remove this visual from gallery?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="bg-white text-rose-600 font-black px-4 py-2 rounded-lg text-[10px] uppercase tracking-widest hover:scale-110 transition-transform">
-                                        Delete
-                                    </button>
-                                </form>
+                                <div class="flex gap-3 mt-auto">
+                                    <a href="{{ route('galleries.edit', $image) }}" 
+                                        class="flex-1 bg-white border border-gray-200 text-chaa-maroon text-center font-black py-3 rounded-xl text-[10px] uppercase tracking-widest hover:border-chaa-maroon hover:shadow-lg transition-all">
+                                        Edit
+                                    </a>
+
+                                    <form action="{{ route('galleries.destroy', $image) }}" method="POST" id="delete-form-{{ $image->id }}" class="flex-1">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" onclick="confirmDelete('delete-form-{{ $image->id }}')"
+                                            class="w-full bg-rose-50 text-rose-600 font-extrabold py-3 rounded-xl text-[10px] uppercase tracking-widest hover:bg-rose-600 hover:text-white transition-all shadow-sm">
+                                            Delete
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                         @endforeach
                     </div>
                 @endif
             </div>
+            </div>
         </div>
     </div>
+
+    <!-- SweetAlert2 Integration -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Success Message Pop
+            @if(session('success'))
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Brilliant!',
+                    text: "{{ session('success') }}",
+                    confirmButtonColor: '#8C1C13',
+                    timer: 3000
+                });
+            @endif
+
+            // Error Message Pop
+            @if(session('error'))
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops!',
+                    text: "{{ session('error') }}",
+                    confirmButtonColor: '#8C1C13'
+                });
+            @endif
+
+            // Delete Confirmation Pop
+            window.confirmDelete = function(formId) {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "This brand visual will be permanently removed!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#8C1C13',
+                    cancelButtonColor: '#5E2C1A',
+                    confirmButtonText: 'Yes, delete it!',
+                    cancelButtonText: 'Wait, go back',
+                    background: '#FDF9F3',
+                    customClass: {
+                        title: 'font-black italic uppercase tracking-widest text-chaa-maroon',
+                        confirmButton: 'rounded-xl uppercase tracking-widest text-xs font-black px-10 py-4',
+                        cancelButton: 'rounded-xl uppercase tracking-widest text-xs font-black px-10 py-4'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        document.getElementById(formId).submit();
+                    }
+                });
+            }
+        });
+    </script>
 </x-app-layout>
