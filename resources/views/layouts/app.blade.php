@@ -71,14 +71,14 @@
     </style>
 </head>
 
-<body class="font-sans antialiased bg-[#FDF9F3]">
+<body class="font-sans antialiased bg-[#1A0A05] h-screen flex flex-col overflow-hidden">
     <x-banner />
 
-    <div class="flex h-screen overflow-hidden">
+    <div class="flex flex-1 overflow-hidden bg-[#FDF9F3]">
         <!-- Sidebar -->
         <aside id="sidebar"
-            class="flex flex-col w-64 bg-[#1A0A05] border-r border-white/5 transition-all duration-300 ease-in-out">
-            <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto">
+            class="flex flex-col w-64 h-full bg-[#1A0A05] border-r border-white/5 transition-all duration-300 ease-in-out z-20">
+            <div class="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto h-full">
                 <div class="flex items-center flex-shrink-0 px-6 mb-10">
                     <img src="{{ asset('assets/img/logo.png') }}" alt="Chaa Majhe Di Logo"
                         class="h-10 w-10 rounded-full object-cover border border-[#C9A84C]/20 shadow-lg">
@@ -118,16 +118,14 @@
                             </svg>
                             {{ __('Contact Messages') }}
                         </x-sidebar-link>
-                        <x-sidebar-link href="{{ route('franchises.index') }}"
-                            :active="request()->routeIs('franchises.*')">
+                        <x-sidebar-link href="{{ route('franchises.index') }}" :active="request()->routeIs('franchises.*')">
                             <svg class="mr-3 size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5" />
                             </svg>
                             {{ __('Franchise Inquiries') }}
                         </x-sidebar-link>
-                        <x-sidebar-link href="{{ route('galleries.index') }}"
-                            :active="request()->routeIs('galleries.*')">
+                        <x-sidebar-link href="{{ route('galleries.index') }}" :active="request()->routeIs('galleries.*')">
                             <svg class="mr-3 size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
@@ -163,24 +161,21 @@
                             ACTIVITIES
                         </p>
                         <div class="space-y-1">
-                            <x-sidebar-link href="{{ route('expenses.index') }}"
-                                :active="request()->routeIs('expenses.index')">
+                            <x-sidebar-link href="{{ route('expenses.index') }}" :active="request()->routeIs('expenses.index')">
                                 <svg class="mr-3 size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 {{ __('Expenses') }}
                             </x-sidebar-link>
-                            <x-sidebar-link href="{{ route('purchases.index') }}"
-                                :active="request()->routeIs('purchases.index')">
+                            <x-sidebar-link href="{{ route('purchases.index') }}" :active="request()->routeIs('purchases.index')">
                                 <svg class="mr-3 size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
                                 {{ __('Purchases') }}
                             </x-sidebar-link>
-                            <x-sidebar-link href="{{ route('sales.index') }}"
-                                :active="request()->routeIs('sales.index')">
+                            <x-sidebar-link href="{{ route('sales.index') }}" :active="request()->routeIs('sales.index')">
                                 <svg class="mr-3 size-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
@@ -200,7 +195,7 @@
                 <div class="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
                     <div class="flex items-center">
                         @if (isset($header))
-                        {{ $header }}
+                            {{ $header }}
                         @endif
                     </div>
                     <div class="flex items-center space-x-6">
@@ -217,8 +212,8 @@
                                     </div>
                                     <div
                                         class="h-9 w-9 rounded-xl overflow-hidden border-2 border-[#C9A84C]/20 group-hover:border-[#C9A84C]">
-                                        <img src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}"
-                                            class="h-full w-full object-cover">
+                                        <img src="{{ Auth::user()->profile_photo_url }}"
+                                            alt="{{ Auth::user()->name }}" class="h-full w-full object-cover">
                                     </div>
                                 </button>
                             </x-slot>

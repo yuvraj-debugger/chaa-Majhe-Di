@@ -2,39 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreFranchiseRequest;
 use App\Models\Franchise;
-use Illuminate\Http\Request;
+use App\Services\FranchiseService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class FranchiseController extends Controller
 {
-    public function index()
+    public function __construct(
+        protected FranchiseService $franchiseService
+    ) {}
+
+    public function index(): View
     {
-        $franchises = Franchise::latest()->get();
+        $franchises = $this->franchiseService->getAllLatest();
+
         return view('franchises.index', compact('franchises'));
     }
 
-    public function store(Request $request)
+    public function store(StoreFranchiseRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'number' => 'required|regex:/^[0-9]{10}$/',
-            'area' => 'required|string|max:255',
-            'address' => 'required|string',
-            'message' => 'nullable|string',
-            'model_type' => 'required|in:Take Away,Dining'
-        ], [
-            'number.regex' => 'Please enter exactly 10 digits for the contact number.'
-        ]);
+        $this->franchiseService->create($request->validated());
 
-        Franchise::create($request->all());
-
-        return redirect()->back()->with('success_franchise', 'Your franchise inquiry has been successfully submitted! Our team will contact you soon.')->withFragment('franchise');
+        return redirect()->back()
+            ->with('success_franchise', 'Your franchise inquiry has been successfully submitted! Our team will contact you soon.')
+            ->withFragment('franchise');
     }
 
-    public function destroy(Franchise $franchise)
+    public function destroy(Franchise $franchise): RedirectResponse
     {
-        $franchise->delete();
+        $this->franchiseService->delete($franchise);
+
         return redirect()->back()->with('success', 'Franchise inquiry deleted successfully.');
     }
 }

@@ -2,75 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Gallery\StoreGalleryRequest;
+use App\Http\Requests\Gallery\UpdateGalleryRequest;
 use App\Models\Gallery;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Services\GalleryService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class GalleryController extends Controller
 {
-    public function index()
+    public function __construct(
+        protected GalleryService $galleryService
+    ) {}
+
+    public function index(): View
     {
-        $galleries = Gallery::latest()->get();
+        $galleries = $this->galleryService->getAllLatest();
+
         return view('galleries.index', compact('galleries'));
     }
 
-    public function store(Request $request)
+    public function store(StoreGalleryRequest $request): RedirectResponse
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120', // 5MB max
-            'title' => 'nullable|string|max:100',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('galleries', 'public');
-            
-            Gallery::create([
-                'image_path' => $path,
-                'title' => $request->title,
-            ]);
-
-            return back()->with('success', 'Image uploaded successfully to gallery.');
+        if (! $request->hasFile('image')) {
+            return back()->with('error', 'Image upload failed.');
         }
 
-        return back()->with('error', 'Image upload failed.');
+        $this->galleryService->create(
+            $request->file('image'),
+            $request->input('title')
+        );
+
+        return back()->with('success', 'Image uploaded successfully to gallery.');
     }
 
-    public function edit(Gallery $gallery)
+    public function edit(Gallery $gallery): View
     {
         return view('galleries.edit', compact('gallery'));
     }
 
-    public function update(Request $request, Gallery $gallery)
+    public function update(UpdateGalleryRequest $request, Gallery $gallery): RedirectResponse
     {
-        $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'title' => 'nullable|string|max:100',
-        ]);
-
-        if ($request->hasFile('image')) {
-            // Delete old physical file
-            if (Storage::disk('public')->exists($gallery->image_path)) {
-                Storage::disk('public')->delete($gallery->image_path);
-            }
-            
-            $path = $request->file('image')->store('galleries', 'public');
-            $gallery->image_path = $path;
-        }
-
-        $gallery->title = $request->title;
-        $gallery->save();
+        $this->galleryService->update(
+            $gallery,
+            $request->input('title'),
+            $request->file('image')
+        );
 
         return redirect()->route('galleries.index')->with('success', 'Gallery image updated successfully.');
     }
 
-    public function destroy(Gallery $gallery)
+    public function destroy(Gallery $gallery): RedirectResponse
     {
-        // Delete physical file
-        if (Storage::disk('public')->exists($gallery->image_path)) {
-            Storage::disk('public')->delete($gallery->image_path);
-        }
-
-        $gallery->delete();
+        $this->galleryService->delete($gallery);
 
         return back()->with('success', 'Image removed from gallery.');
     }

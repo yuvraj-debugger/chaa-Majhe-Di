@@ -2,88 +2,52 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Menu\StoreMenuRequest;
+use App\Http\Requests\Menu\UpdateMenuRequest;
 use App\Models\Menu;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use App\Services\MenuService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class MenuController extends Controller
 {
-    public function index()
+    public function __construct(
+        protected MenuService $menuService
+    ) {}
+
+    public function index(): View
     {
-        $menus = Menu::latest()->get();
+        $menus = $this->menuService->getAllLatest();
+
         return view('menus.index', compact('menus'));
     }
 
-    public function store(Request $request)
+    public function store(StoreMenuRequest $request): RedirectResponse
     {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'title' => 'required|string|max:100',
-            'subtitle' => 'nullable|string|max:100',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-        ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('menus', 'public');
-            
-            Menu::create([
-                'title' => $request->title,
-                'subtitle' => $request->subtitle,
-                'description' => $request->description,
-                'price' => $request->price,
-                'image_path' => $path,
-            ]);
-
-            return back()->with('success', 'Menu item added successfully.');
+        if (! $request->hasFile('image')) {
+            return back()->with('error', 'Image upload failed.');
         }
 
-        return back()->with('error', 'Image upload failed.');
+        $this->menuService->create($request->validated(), $request->file('image'));
+
+        return back()->with('success', 'Menu item added successfully.');
     }
 
-    public function edit(Menu $menu)
+    public function edit(Menu $menu): View
     {
         return view('menus.edit', compact('menu'));
     }
 
-    public function update(Request $request, Menu $menu)
+    public function update(UpdateMenuRequest $request, Menu $menu): RedirectResponse
     {
-        $request->validate([
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:5120',
-            'title' => 'required|string|max:100',
-            'subtitle' => 'nullable|string|max:100',
-            'description' => 'nullable|string',
-            'price' => 'required|numeric',
-        ]);
-
-        if ($request->hasFile('image')) {
-            // Delete physical old file
-            if ($menu->image_path && Storage::disk('public')->exists($menu->image_path)) {
-                Storage::disk('public')->delete($menu->image_path);
-            }
-            
-            $path = $request->file('image')->store('menus', 'public');
-            $menu->image_path = $path;
-        }
-
-        $menu->update([
-            'title' => $request->title,
-            'subtitle' => $request->subtitle,
-            'description' => $request->description,
-            'price' => $request->price,
-            'image_path' => $menu->image_path,
-        ]);
+        $this->menuService->update($menu, $request->validated(), $request->file('image'));
 
         return redirect()->route('menus.index')->with('success', 'Menu item updated successfully.');
     }
 
-    public function destroy(Menu $menu)
+    public function destroy(Menu $menu): RedirectResponse
     {
-        if ($menu->image_path && Storage::disk('public')->exists($menu->image_path)) {
-            Storage::disk('public')->delete($menu->image_path);
-        }
-
-        $menu->delete();
+        $this->menuService->delete($menu);
 
         return back()->with('success', 'Menu item removed successfully.');
     }

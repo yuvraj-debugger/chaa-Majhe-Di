@@ -2,45 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreContactRequest;
 use App\Models\Contact;
-use Illuminate\Http\Request;
+use App\Services\ContactService;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ContactController extends Controller
 {
-    /**
-     * Store a new contact message.
-     */
-    public function store(Request $request)
+    public function __construct(
+        protected ContactService $contactService
+    ) {}
+
+    public function store(StoreContactRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'number' => ['required', 'string', 'regex:/^[0-9]{10}$/'],
-            'message' => 'required|string',
-        ], [
-            'number.regex' => 'The phone number must be exactly 10 digits.',
-        ]);
+        $this->contactService->create($request->validated());
 
-        Contact::create($request->all());
-
-        return redirect(url()->previous() . '#contact')->with('success', 'Message sent successfully! We will get back to you soon.');
+        return redirect(url()->previous() . '#contact')
+            ->with('success', 'Message sent successfully! We will get back to you soon.');
     }
 
-    /**
-     * Display a listing of messages.
-     */
-    public function index()
+    public function index(): View
     {
-        $contacts = Contact::latest()->get();
+        $contacts = $this->contactService->getAllLatest();
+
         return view('contacts.index', compact('contacts'));
     }
 
-    /**
-     * Remove the specified message.
-     */
-    public function destroy(Contact $contact)
+    public function destroy(Contact $contact): RedirectResponse
     {
-        $contact->delete();
+        $this->contactService->delete($contact);
+
         return back()->with('success', 'Message deleted successfully.');
     }
 }
