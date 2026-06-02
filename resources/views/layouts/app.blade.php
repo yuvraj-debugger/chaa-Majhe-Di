@@ -23,38 +23,75 @@
         }
 
         aside#sidebar {
-            background-color: #1A0A05 !important;
-            border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+            background: linear-gradient(180deg, #1A0A05 0%, #0B0402 100%) !important;
+            border-right: 1px solid rgba(201, 168, 76, 0.15) !important;
         }
 
         header {
-            background-color: rgba(255, 255, 255, 0.7) !important;
+            background-color: rgba(253, 249, 243, 0.8) !important;
             backdrop-filter: blur(12px) !important;
             -webkit-backdrop-filter: blur(12px) !important;
             border-bottom: 1px solid rgba(201, 168, 76, 0.1) !important;
         }
 
-        /* Sidebar Typography Overrides */
+        /* Sidebar Section Titles */
         aside nav p {
-            color: rgba(201, 168, 76, 0.4) !important;
-            font-weight: 900 !important;
-            letter-spacing: 0.3em !important;
+            color: rgba(201, 168, 76, 0.5) !important;
+            font-weight: 800 !important;
+            font-size: 0.65rem !important;
+            letter-spacing: 0.25em !important;
+            margin-top: 1.75rem !important;
+            margin-bottom: 0.5rem !important;
+            padding-left: 1rem !important;
+            text-transform: uppercase !important;
         }
 
+        /* Sidebar Links Styling */
         aside a {
             color: rgba(232, 201, 122, 0.6) !important;
             text-decoration: none !important;
+            border-radius: 12px !important;
+            margin: 0.15rem 0.5rem !important;
+            padding: 0.65rem 0.85rem !important;
+            font-size: 0.8rem !important;
+            font-weight: 600 !important;
+            letter-spacing: 0.025em !important;
+            display: flex !important;
+            align-items: center !important;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            border-left: 3px solid transparent !important;
         }
 
-        aside a:hover,
-        aside a.sidebar-active {
+        aside a:hover {
             color: #ffffff !important;
-            background-color: rgba(255, 255, 255, 0.05) !important;
+            background-color: rgba(255, 255, 255, 0.04) !important;
+            transform: translateX(4px);
+            border-left: 3px solid rgba(201, 168, 76, 0.4) !important;
+        }
+
+        aside a.sidebar-active {
+            color: #1A0A05 !important;
+            background: linear-gradient(90deg, #C9A84C 0%, #E8C97A 100%) !important;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.2) !important;
+            font-weight: 750 !important;
+            border-left: 3px solid #C9A84C !important;
         }
 
         aside a svg {
             color: inherit !important;
             flex-shrink: 0;
+            width: 1.25rem !important;
+            height: 1.25rem !important;
+            margin-right: 0.75rem !important;
+            transition: transform 0.25s ease !important;
+        }
+
+        aside a:hover svg {
+            transform: scale(1.1);
+        }
+
+        aside a.sidebar-active svg {
+            color: #1A0A05 !important;
         }
 
         aside span {
@@ -65,8 +102,7 @@
         .sidebar-brand {
             color: #ffffff !important;
             font-weight: 900 !important;
-            font-style: italic !important;
-            text-transform: uppercase !important;
+            letter-spacing: -0.025em !important;
         }
     </style>
 </head>
